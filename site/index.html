@@ -6,14 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./custom.css">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
   
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script> -->
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+  <script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
   <script src="https://unpkg.com/plyr@3"></script>
   
 
@@ -144,124 +143,5 @@
 </body>
 
 </html>
-
-<script>
-  $("#voicefileuploadicon").click(function() {
-    $(this).parent().parent().find("input:file").click();
-  });
-  $("#voicefileupload").click(function() {
-    $(this).parent().find("input:file").click();
-  });
-
-  $('input:file', '.ui.action.input')
-    .on('change', function(e) {
-      var name = e.target.files[0].name;
-      $('input:text', $(e.target).parent()).val(name);
-    });
-  
-  const optionalFields = ['first_name', 'job', 'description', 'language'];
-  var API_URL = 'https://REPLACE_ME.execute-api.us-east-1.amazonaws.com/dev/validate';
-
-  var errorDiv = document.getElementById('error-message')
-
-  $('#submission').submit(function (event) {
-    event.preventDefault();
-
-    const captchtaResponse = grecaptcha.getResponse() || false
-
-    if (!captchtaResponse) {
-      errorDiv.innerHTML = 'Complete the Captcha please!'
-      return false
-    }
-
-    var post_data = {
-      captcha: captchtaResponse
-    };
-      
-    for (i = 0; i < optionalFields.length; i++) {
-      if ($('#' + optionalFields[i]).val()) {
-        post_data[optionalFields[i]] = $('#' + optionalFields[i]).val()
-      }
-    }
-
-    $.ajax({
-      type: 'POST',
-      url: API_URL,
-      dataType: 'json',
-      crossDomain: true,
-      contentType: 'application/json',
-      data: JSON.stringify(post_data),
-      success: function (responseData, textStatus, jqXHR) {
-        console.log(responseData);
-        if (responseData.statusCode == '200') {
-          console.log(responseData);
-          document.getElementById("form-div").innerHTML = "<p> Your story is being uploaded now</p>"
-          document.getElementById("hr-divider").innerHTML = ""
-          var voice_file = document.getElementById("voicefile").files[0]
-          let formData = new FormData();
-          formData.append("voice", voice_file);
-          fetch(responseData.url, {method: "POST", body: formData});
-        };
-        if (responseData.message == 'Captcha Invalid') {
-          console.log('The Captcha failed. Please try again!')
-        };
-      },
-    })
-  })
-
-  
-
-testVoices = [
-  {
-    id: 'm1-01-trailer.mp3',
-    name : 'Fernando',
-    job : 'Nurse',
-    description : 'super good at nursing',
-    language : 'en',
-    url: 'https://s3-us-west-2.amazonaws.com/voicesofcovid.com/m1-01-trailer.mp3'
-  },
-  {
-    id: '178tyugadsih',
-    name : 'Fernando',
-    job : 'Nurse',
-    description : 'super good at nursing',
-    language : 'en',
-    url: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3'
-  }
-]
-
-function writeVoices(voices){
-  let finalCards = ''
-  for (i = 0; i < voices.length; i++){
-    finalCards += `
-      <div class="card">
-        <div class="content">
-          <div class="header">
-            ` + voices[i].name + ` 
-          </div>
-          <div class="meta">
-            ` + voices[i].job + ` | ` + voices[i].language + `
-          </div>
-          <div class="description">
-            ` + voices[i].description + `
-          </div>
-        </div>
-        <audio crossorigin playsinline class="player" controls>
-            <source src="` + voices[i].url + `" type="audio/mp3">
-          </audio>
-        <div class="extra content">
-          
-        </div>
-    </div>
-      `;
-    }
-  document.getElementById("voices").innerHTML += finalCards
-}
-
-writeVoices(testVoices)
-
-// Change "{}" to your options:
-// https://github.com/sampotts/plyr/#options
-const players = Array.from(document.getElementsByClassName("extra content audioplayer")).map(p => new Plyr(p));
-
-</script>
+<script src="./main.js"></script>
+<script src="./players.js"></script>

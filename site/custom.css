@@ -1,0 +1,15 @@
+body {
+    padding: 1em;
+  }
+  
+  .ui.action.input input[type="file"] {
+    display: none;
+  }
+  
+  .ui.top.fixed {
+    background: #E9DCBA
+  }
+
+  .ui.horizontal.divider {
+    color: #E9DCBA;
+  }
