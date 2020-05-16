@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>Voices of COVID-19</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./custom.css">
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
-  
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
-  <script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
-  <script src="https://unpkg.com/plyr@3"></script>
-  
-
-  <style>
-    .card {
-      margin-top: 10px;
-    }
-
-    body {
-      background-color: #373E58;
-    }
-
-    .main-box {
-      margin-top: 5rem;
-    }
-
-    body>.container {
-      padding: 24px;
-      background-color: #373E58;
-    }
-
-    .hits-box {
-      padding: 1px 14px 12px;
-    }
-
-
-  </style>
-</head>
-
-<body>
-  <div class="ui top fixed stackable menu">
-    <div class="item">
-      <h2>Voices of COVID-19</h2>
+  <head>
+    <title>Voices of COVID-19</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
+    <style>
+      .card {
+        margin-top: 10px;
+      }
+      body {
+        background-color: #373E58;
+      }
+      .main-box {
+        margin-top: 5rem;
+      }
+      body>.container {
+        padding: 24px;
+        background-color: #373E58;
+      }
+      .hits-box {
+       padding: 1px 14px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui top fixed stackable menu">
+      <div class="item">
+        <h2>Voices of COVID-19</h2>
+      </div>
     </div>
-  </div>
-
-  <div class="ui container main-box">
+    <div class="ui container main-box">
     <div class="ui grid">
-        <div class="row mobile only">
-            <br>
-            <br>
-        </div>
+      <div class="row mobile only">
+        <br>
+        <br>
+      </div>
     </div>
     <div class="submit-box" id="form-div">
       <div class="ui brown top attached segment">
@@ -111,11 +99,9 @@
         </div>
       </form>
     </div>
-
     <div class="ui horizontal divider" id="hr-divider">
       Or
     </div>
-
     <div class="rates-box">
       <div class="ui purple top attached segment">
         <div class="ui stackable grid">
@@ -124,24 +110,17 @@
           </div>
         </div>
       </div>
-
-      
       <div class="ui attached segment">
         <br>
         <div class="ui three column grid">
           <div class="ui cards" id="voices">
-
           </div>
-
-        <br>
+          <br>
+        </div>
       </div>
-
     </div>
-  </div>
-  <br>
-
-</body>
-
+    <br>
+  </body>
 </html>
 <script src="./main.js"></script>
 <script src="./players.js"></script>
