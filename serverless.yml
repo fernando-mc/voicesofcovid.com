@@ -5,38 +5,59 @@ service: voicesofcovid
 provider:
   name: aws
   profile: fernando
-  region: us-west-2
   runtime: python3.7
   environment:
+    ALGOLIA_ADMIN_API_KEY: ${param:ALGOLIA_ADMIN_API_KEY}
+    ALGOLIA_APPLICATION_ID: ${param:ALGOLIA_APPLICATION_ID}
     GOOGLE_RECAPTCHA_TOKEN: ${param:GOOGLE_RECAPTCHA_TOKEN}
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - s3:*
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - ses:*
+      Resource: 
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - "arn:aws:s3:::voicesofcovid/*"
+        - "arn:aws:s3:::voicesofcovid"
+        - "arn:aws:ses:us-east-1:560654602687:identity/fmcorey@gmail.com"
+        - "arn:aws:ses:us-east-1:560654602687:identity/fernandomc.sea@gmail.com"
 
 functions:
-  createVoice:
-    handler: backend/create_voice.handler
-    events:
+  generateUrl:
+    handler: backend/generate_url.handler
+    events: 
       - http:
-          path: voice
           method: post
+          path: generate
           cors: true
           request:
             schema:
               application/json: ${file(./backend/voice.model.json)}
+  sendApprovalRequestEmail:
+    handler: backend/request_approval.handler
+    events:
+      - s3:
+          bucket: voicesofcovid
+          event: s3:ObjectCreated:*
+          existing: true
+  approveRequestAddVoice:
+    handler: backend/approve.handler
+    events:
+      - http:
+          path: /approve/{id}
+          method: get
+          cors: true
 
 resources:
   Resources:
-    TechSalaries:
+    voicesOfCovid:
       Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
       Properties:
         AttributeDefinitions:
         - AttributeName: pk
@@ -58,6 +79,7 @@ package:
     - site/**
     - venv/**
     - node_modules/**
+    - frontend/
 
 plugins:
   - serverless-finch
