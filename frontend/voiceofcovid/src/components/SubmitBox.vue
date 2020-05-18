@@ -18,15 +18,9 @@
                     <label for="description">Description:</label>
                     <input type="text" class="form-control" id="description" placeholder="What's your story?" name="description">
                     </div>
-                    <div class="field">
-                    <label for="language">Language:</label>
-                    <select class="ui selection dropdown" id="gender">
-                        <option value="">Select language</option>
-                        <option value="english">English</option>
-                        <option value="espanol">Español</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    </div>
+                </div>
+                <div class="ui two column centered grid">
+                    <file-select v-model="file"></file-select>
                 </div>
                 <br>
                 <div class="ui two column centered grid">
@@ -49,23 +43,20 @@
 
 <script>
 import VueRecaptcha from 'vue-recaptcha';
+import FileSelect from './FileSelector.vue'
 
 export default {
   name: 'SubmitBox',
   components: {
       VueRecaptcha,
+      FileSelect,
   },
   data () {
     return {
-        recordAudio: false
+        recordAudio: false,
+        file: null,
     }
   },
-  methods: {
-    onResult (data) {
-      console.log('The blob data:', data);
-      console.log('Downloadable audio', window.URL.createObjectURL(data));
-    }
-  }
 }
 </script>
 
