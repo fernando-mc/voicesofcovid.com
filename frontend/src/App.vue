@@ -28,7 +28,7 @@ export default {
 
 <style>
   .card {
-    margin-top: 10px;
+    margin-top: auto;
   }
   body {
     background-color: #373E58;
