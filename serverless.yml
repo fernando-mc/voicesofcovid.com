@@ -76,10 +76,9 @@ resources:
 
 package:
   exclude:
-    - site/**
     - venv/**
     - node_modules/**
-    - frontend/
+    - frontend/**
 
 plugins:
   - serverless-finch
@@ -88,4 +87,4 @@ plugins:
 custom:
   client:
     bucketName: voicesofcovid.com
-    distributionFolder: site
+    distributionFolder: frontend/dist
