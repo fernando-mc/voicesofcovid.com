@@ -5,6 +5,7 @@
       <SubmitBox/>
       <HorizontalDivider/>
       <VoicesBox/>
+      <PageFooter/> 
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@ import PageHeader from './components/PageHeader.vue'
 import SubmitBox from './components/SubmitBox.vue'
 import HorizontalDivider from './components/HorizontalDivider.vue'
 import VoicesBox from './components/VoicesBox.vue'
+import PageFooter from './components/PageFooter.vue'
 
 export default {
   name: 'App',
@@ -22,6 +24,7 @@ export default {
     SubmitBox,
     HorizontalDivider,
     VoicesBox,
+    PageFooter,
   },
 }
 </script>
