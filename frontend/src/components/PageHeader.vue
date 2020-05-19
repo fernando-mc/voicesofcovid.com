@@ -28,14 +28,14 @@
     <div v-show="submissionGuidelinesModalVisibility" class="ui active modal">
       <i v-on:click="hideSubmissionGuidelines()" class="close icon"></i>
       <div class="header">
-        More stuff
+        Submission Guidelines
       </div>
       <div class="content">
         <div class="description">
           <p>First off, if you're considering submitting your story - thank you!</p>
-          <p>If you decide to submit, we require that you acknolwedge that you are releasing your submission to the <a href="https://fairuse.stanford.edu/overview/public-domain/welcome/" target="_blank"> public domain</a>. Essentially, this menas that you give up all rights to the recording and anyone can use it any way they want.</p>
+          <p>If you decide to submit, we require that you acknolwedge that you are releasing your submission to the <a href="https://fairuse.stanford.edu/overview/public-domain/welcome/" target="_blank"> public domain</a>. Essentially, this means that you give up all rights to the recording and anyone can use it any way they want.</p>
           <p>This allows anyone and everyone to share your story or repurpose it. It also allows us to edit the story - which we will do carefully and dilligently if we feel we need to before releasing it to curate the collected voices more effectively.</p>
-          <p>If you have any questions, don't hestitate to <a href="https://twitter.com/fmc_sea">reach out to me</a>.</p>
+          <p>If you have any questions, don't hesitate to <a href="https://twitter.com/fmc_sea">reach out to me</a>.</p>
           <br>
         </div>
       </div>
