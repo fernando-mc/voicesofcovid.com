@@ -87,4 +87,10 @@ export default {
   top: 10%;
 }
 
+.close.icon {
+  color: black;
+  top: 0;
+  right: 0;
+}
+
 </style>

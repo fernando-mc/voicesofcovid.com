@@ -16,7 +16,6 @@ export default {
 .footer {
   margin: auto;
   margin-top: 1em;
-  
   width: 50%;
   background-color: white;
   color: black;

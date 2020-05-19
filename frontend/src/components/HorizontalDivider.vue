@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="ui horizontal divider" id="hr-divider">
     Or
