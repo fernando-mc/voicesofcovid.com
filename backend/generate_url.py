@@ -30,11 +30,11 @@ def generate_presigned_url():
         object_name,
         Fields={
             "acl": "public-read",
-            "content-length-range": [0, 2000000]
+            "content-length-range": [0, 10000000]
         },
         Conditions=[
             {"acl": "public-read"},
-            ["content-length-range", 0, 2000000]
+            ["content-length-range", 0, 10000000]
         ],
         ExpiresIn=3600
     )
