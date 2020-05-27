@@ -22,15 +22,15 @@
                 </div>
             </div>
             <div class="ui two column centered grid">
+                <div class="one column row">
+                    <div class="right floated item">
+                        <vue-recaptcha sitekey="6LfBV-YUAAAAAC2F4BdtYjZB72gCuP-aFRd0F_N7"></vue-recaptcha>
+                    </div>
+                </div>
                 <file-select v-model="file"></file-select>
             </div>
             <br>
             <div class="ui two column centered grid">
-                <div class="one column row">
-                <div class="right floated item">
-                    <vue-recaptcha sitekey="6LfBV-YUAAAAAC2F4BdtYjZB72gCuP-aFRd0F_N7"></vue-recaptcha>
-                </div>
-                </div>
                 <div class="one column row">
                 <button v-on:click.prevent="submitForm()" type="submit" class="ui huge blue button">Submit</button>
                 <div class="ui error message">
@@ -44,8 +44,8 @@
 
 <script>
 import VueRecaptcha from 'vue-recaptcha';
-import FileSelect from './FileSelector.vue'
-import axios from 'axios'
+import FileSelect from './FileSelector.vue';
+import axios from 'axios';
 
 export default {
   name: 'SubmitBox',

@@ -9,6 +9,9 @@
     <div class="item">
       <a v-on:click="showSubmissionGuidelines()">Submission Guidelines</a>
     </div>
+    <div class="item">
+      <a v-on:click="showRecordingModal()">Recording Tool</a>
+    </div>
 
     <div v-show="learnMoreModalVisibility" class="ui active modal">
       <i v-on:click="hideLearnMore()" class="close icon"></i>
@@ -40,6 +43,22 @@
         </div>
       </div>
     </div>
+
+    <div v-show="recordingModalVisibility" class="ui active modal">
+      <i v-on:click="hideRecordingModal()" class="close icon"></i>
+      <div class="header">
+        Record your audio.
+      </div>
+      <div class="content">
+        <div class="ui grid">
+          <audio-recorder
+            :attempts="1"
+            :time="2"
+            :show-upload-button="false"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -67,11 +86,22 @@ export default {
         this.submissionGuidelinesModalVisibility = false;
       }
     },
+    showRecordingModal() { 
+      if (this.recordingModalVisibility == false){ 
+        this.recordingModalVisibility = true;
+      }
+    },
+    hideRecordingModal() {
+      if (this.recordingModalVisibility == true) {
+        this.recordingModalVisibility = false;
+      }
+    },
   },
   data () {
     return {
       learnMoreModalVisibility: false,
       submissionGuidelinesModalVisibility: false,
+      recordingModalVisibility: false,
     }
   }
 }
