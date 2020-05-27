@@ -47,7 +47,7 @@
     <div v-show="recordingModalVisibility" class="ui active modal">
       <i v-on:click="hideRecordingModal()" class="close icon"></i>
       <div class="header">
-        Record your audio.
+        Record your audio and select the recording to listen to or download it.
       </div>
       <div class="content">
         <div class="ui grid">
@@ -55,6 +55,7 @@
             :attempts="1"
             :time="2"
             :show-upload-button="false"
+            :after-recording="downloadRecording"
           />
         </div>
       </div>
@@ -66,6 +67,9 @@
 export default {
   name: 'PageHeader',
   methods: {
+    downloadRecording() {
+      console.log(this)
+    },
     showLearnMore() { 
       if (this.learnMoreModalVisibility == false){ 
         this.learnMoreModalVisibility = true;
